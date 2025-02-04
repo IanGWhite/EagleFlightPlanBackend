@@ -1,12 +1,12 @@
 {
-  "name": "resume-backend-t5",
+  "name": "flight-plan-t5",
   "version": "1.0.0",
-  "description": "Resume Node.js with Rest API",
+  "description": "Flight Plan Node.js with Rest API",
   "main": "server.js",
   "scripts": {
     "test": "jest --",
     "start": "node server.js",
-    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json resume-backend-t5.service .env deploy"
+    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json flight-plan-t5-backend.service .env deploy"
   },
   "keywords": [
     "node.js",
