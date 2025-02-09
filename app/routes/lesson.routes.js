@@ -33,5 +33,5 @@ module.exports = (app) => {
   // Delete all Lessons
   router.delete("/:studentId/lessons/:id", [authenticate], lessons.deleteAll);
 
-  app.use("/resume-t5/students", router);
+  app.use("/flight-plan-t5/students", router);
 };

@@ -22,5 +22,5 @@ module.exports = (app) => {
   // Delete a Student with id
   router.delete("/:id", [authenticate], students.delete);
 
-  app.use("/resume-t5/students", router);
+  app.use("/flight-plan-t5/students", router);
 };
