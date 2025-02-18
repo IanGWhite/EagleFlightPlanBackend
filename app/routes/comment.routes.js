@@ -27,5 +27,5 @@ module.exports = (app) => {
   // Delete all Comments
   router.delete("/:studentId/resumes/:resumeId/comments/deleteAll", comments.deleteAll);
 
-  app.use("/resume-t5/students", router);
+  app.use("/flight-plan-t5/students", router);
 };

@@ -26,6 +26,6 @@ module.exports = (app) => {
     // Delete all ResumeSkills
     router.delete("/:studentId/:resumeId/resumeSkills/deleteAll", resumeSkills.deleteAll);
   
-    app.use("/resume-t5/students", router);
+    app.use("/flight-plan-t5/students", router);
   };
   

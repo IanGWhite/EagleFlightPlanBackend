@@ -27,5 +27,5 @@ module.exports = (app) => {
   // Delete all Links
   router.delete("/:studentId/links/deleteAll", links.deleteAll);
 
-  app.use("/resume-t5/students", router);
+  app.use("/flight-plan-t5/students", router);
 };
