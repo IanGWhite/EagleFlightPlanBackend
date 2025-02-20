@@ -10,7 +10,7 @@ module.exports = (app) => {
     // Retrieve all UserRoles for a Student
     router.get(
       "/:userId/userRoles/",
-      userRoles.findAllForUser
+      userRoles.findAll
     );
   
     // Retrieve a single UserRole with id
