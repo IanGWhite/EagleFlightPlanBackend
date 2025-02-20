@@ -64,6 +64,18 @@ require("./app/routes/resumeLink.routes")(app);
 require("./app/routes/resumeProject.routes")(app);
 require("./app/routes/resumeSkill.routes")(app);
 
+require("./app/routes/document.routes")(app);
+require("./app/routes/role.routes")(app);
+require("./app/routes/event.routes")(app);
+require("./app/routes/eventAttended.routes")(app);
+require("./app/routes/pointLog.routes")(app);
+require("./app/routes/studentTask.routes")(app);
+require("./app/routes/task.routes")(app);
+require("./app/routes/userRole.routes")(app);
+require("./app/routes/eagleExperienceEvent.routes")(app);
+require("./app/routes/semester.routes")(app);
+require("./app/routes/shopItem.routes")(app);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3035;
 if (process.env.NODE_ENV !== "test") {
