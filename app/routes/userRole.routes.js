@@ -5,27 +5,27 @@ module.exports = (app) => {
   
     // Create a new UserRole for a Student
     //router.post("/:studentId/userRoles/", [authenticate], userRoles.create);
-    router.post("/:userId/userRoles/", userRoles.create);
+    router.post("/userRoles/", userRoles.create);
   
     // Retrieve all UserRoles for a Student
     router.get(
-      "/:userId/userRoles/",
+      "/userRoles/",
       userRoles.findAll
     );
   
     // Retrieve a single UserRole with id
     //router.get("/:studentId/userRoles/:id", [authenticate], userRoles.findOne);
-    router.get("/:userId/userRoles/:id", userRoles.findOne);
+    router.get("/userRoles/:id", userRoles.findOne);
   
     // Update a UserRole with id
-    router.put("/:userId/userRoles/:id", userRoles.update);
+    router.put("/userRoles/:id", userRoles.update);
   
     // Delete a UserRole with id
-    router.delete("/:userId/userRoles/:id", userRoles.delete);
+    router.delete("/userRoles/:id", userRoles.delete);
   
     // Delete all UserRoles
-    router.delete("/:userId/userRoles/deleteAll", userRoles.deleteAll);
+    router.delete("/userRoles/deleteAll", userRoles.deleteAll);
   
-    app.use("/flight-plan-t5/users", router);
+    app.use("/flight-plan-t5", router);
   };
   

@@ -10,7 +10,7 @@ module.exports = (app) => {
     // Retrieve all Semesters for a Student
     router.get(
       "/semesters/",
-      semesters.findAllForStudent
+      semesters.findAll
     );
   
     // Retrieve a single Semester with id

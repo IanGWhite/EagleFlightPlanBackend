@@ -1,30 +1,30 @@
 module.exports = (app) => {
-    const semesters = require("../controllers/semester.controller.js");
+    const shopItems = require("../controllers/shopItem.controller.js");
     const { authenticate } = require("../authorization/authorization.js");
     var router = require("express").Router();
   
     // Create a new Award for a Student
-    //router.post("/:studentId/semesters/", [authenticate], semesters.create);
-    router.post("/semesters/", semesters.create);
+    //router.post("/:studentId/shopItems/", [authenticate], shopItems.create);
+    router.post("/shopItems/", shopItems.create);
   
     // Retrieve all Awards for a Student
     router.get(
-      "/semesters/",
-      semesters.findAll
+      "/shopItems/",
+      shopItems.findAll
     );
   
     // Retrieve a single Award with id
-    //router.get("/:studentId/semesters/:id", [authenticate], semesters.findOne);
-    router.get("/semesters/:id", semesters.findOne);
+    //router.get("/:studentId/shopItems/:id", [authenticate], shopItems.findOne);
+    router.get("/shopItems/:id", shopItems.findOne);
   
     // Update a Award with id
-    router.put("/semesters/:id", semesters.update);
+    router.put("/shopItems/:id", shopItems.update);
   
     // Delete a Award with id
-    router.delete("/semesters/:id", semesters.delete);
+    router.delete("/shopItems/:id", shopItems.delete);
   
     // Delete all Awards
-    router.delete("/semesters/deleteAll", semesters.deleteAll);
+    router.delete("/shopItems/deleteAll", shopItems.deleteAll);
   
     app.use("/flight-plan-t5", router);
   };

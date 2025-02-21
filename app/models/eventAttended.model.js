@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const EventAttended = sequelize.define("aventAttended", {
+    const EventAttended = sequelize.define("EventAttended", {
 
     });
     return EventAttended;
