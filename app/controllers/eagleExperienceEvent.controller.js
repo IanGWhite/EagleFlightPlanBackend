@@ -4,17 +4,18 @@ const Op = db.Sequelize.Op;
 // Create and Save a new EagleExperienceEvent
 exports.create = (req, res) => {
   //Validate request
+  /*
   if (!req.body.title) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
     return;
   }
+  */
 
   // Create a EagleExperienceEvent
   const eagleExperienceEvent = {
-    eventId: req.params.eventId,
-    eagleExperienceId: req.params.eagleExperienceEventId,
+
   };
   // Save EagleExperienceEvent in the database
   EagleExperienceEvent.create(eagleExperienceEvent)

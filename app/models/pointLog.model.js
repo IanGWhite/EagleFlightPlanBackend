@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       pointDifference: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       Date: {

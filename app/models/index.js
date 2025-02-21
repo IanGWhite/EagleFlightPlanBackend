@@ -41,14 +41,14 @@ db.resumeSkill = require("./resumeSkill.model.js")(sequelize, Sequelize);
 db.document = require("./document.model.js")(sequelize, Sequelize);
 db.role = require("./role.model.js")(sequelize, Sequelize);
 db.event = require("./event.model.js")(sequelize, Sequelize);
-//db.eventAttended = require("./eventAttended.model.js")(sequelize, Sequelize);
-//db.pointLog = require("./pointLog.model.js")(sequelize, Sequelize);
-//db.studentTask = require("./studentTask.model.js")(sequelize, Sequelize);
-//db.task = require("./task.model.js")(sequelize, Sequelize);
-//db.userRole = require("./userRole.model.js")(sequelize, Sequelize);
-//db.eagleExperienceEvent = require("./eagleExperienceEvent.model.js")(sequelize, Sequelize);
-//db.semester = require("./semester.model.js")(sequelize, Sequelize);
-//db.shopItem = require("./shopItem.model.js")(sequelize, Sequelize);
+db.eventAttended = require("./eventAttended.model.js")(sequelize, Sequelize);
+db.pointLog = require("./pointLog.model.js")(sequelize, Sequelize);
+db.studentEagleTask = require("./studentEagleTask.model.js")(sequelize, Sequelize);
+db.eagleTask = require("./eagleTask.model.js")(sequelize, Sequelize);
+db.userRole = require("./userRole.model.js")(sequelize, Sequelize);
+db.eagleExperienceEvent = require("./eagleExperienceEvent.model.js")(sequelize, Sequelize);
+db.semester = require("./semester.model.js")(sequelize, Sequelize);
+db.shopItem = require("./shopItem.model.js")(sequelize, Sequelize);
 
 // foreign key for session
 db.user.hasMany(

@@ -4,18 +4,18 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Document
 exports.create = (req, res) => {
   //Validate request
+  /*
   if (!req.body.title) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
     return;
   }
-
+  */
   // Create a Document
   const document = {
-    studentId: req.params.studentId,
     name: req.body.name,
-    file: req.Document.file,
+    file: req.body.file,
   };
   // Save Document in the database
   Document.create(document)

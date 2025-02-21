@@ -1,11 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
     const StudentEagleTask = sequelize.define("studentEagleTask", {
       pointsAwarded: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       approvedBy: {
-        type: Sequelize.VARCHAR,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       completionDate: {
@@ -17,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       Reflection: {
-        type: Sequelize.VARCHAR(1000),
+        type: Sequelize.STRING(1000),
         allowNull: true,
       },
     });

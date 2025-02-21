@@ -4,16 +4,17 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Role
 exports.create = (req, res) => {
   //Validate request
+  /*
   if (!req.body.title) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
     return;
   }
+  */
 
   // Create a Role
   const role = {
-    userId: req.params.userId,
     name: req.body.name,
     canEditPoints: req.body.canEditPoints,
     canAddEvents: req.body.canAddEvents,

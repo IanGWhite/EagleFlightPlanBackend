@@ -4,8 +4,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      document: {
-        type: Sequelize.BLOB,
+      file: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
     });
