@@ -38,6 +38,14 @@ db.resumeLink = require("./resumeLink.model.js")(sequelize, Sequelize);
 db.resumeProject = require("./resumeProject.model.js")(sequelize, Sequelize);
 db.resumeSkill = require("./resumeSkill.model.js")(sequelize, Sequelize);
 
+db.eagleExperiences = require("./eagleExperiences.model.js")(sequelize, Sequelize);
+db.studentEagleExperiences = require("./studentEagleExperiences.model.js")(sequelize, Sequelize);
+db.studentBadges = require("./studentBadges.model.js")(sequelize, Sequelize);
+db.badgeExperiences = require("./BadgeExperiences.model.js")(sequelize, Sequelize);
+db.badgeTasks = require("./badgeTasks.model.js")(sequelize, Sequelize);
+db.studentStrengths = require("./studentStrengths.model.js")(sequelize, Sequelize);
+db.studentMajors = require("./studentMajors.model.js")(sequelize, Sequelize);
+db.badges = require("./badges.model.js")(sequelize, Sequelize);
 // foreign key for session
 db.user.hasMany(
   db.session,
