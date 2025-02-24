@@ -7,7 +7,7 @@ const app = express();
 console.log('test hello');
 const db = require("./app/models");
 
-db.sequelize.sync({force: false});
+db.sequelize.sync({force: true});
 
 var corsOptions = {
   origin: "http://localhost:8081",
@@ -64,6 +64,15 @@ require("./app/routes/resumeLink.routes")(app);
 require("./app/routes/resumeProject.routes")(app);
 require("./app/routes/resumeSkill.routes")(app);
  
+require("./app/routes/eagleExperiences.routes")(app);
+require("./app/routes/studentEagleExperiences.routes")(app);
+require("./app/routes/studentBadges.routes")(app);
+require("./app/routes/badgeExperiences.routes")(app);
+require("./app/routes/badgeTasks.routes")(app);
+require("./app/routes/studentStrengths.routes")(app);
+require("./app/routes/studentMajors.routes")(app);
+require("./app/routes/badges.routes")(app);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3035;
 if (process.env.NODE_ENV !== "test") {
