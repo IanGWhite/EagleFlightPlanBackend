@@ -20,6 +20,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING(1000),
         allowNull: true,
       },
+      submissionDate: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
     });
     return StudentEagleTask;
   };

@@ -1,16 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
     const EagleTask = sequelize.define("eagleTask", {
-      name: {
+      category: {
         type: Sequelize.STRING,
       },
-      category: {
+      name: {
         type: Sequelize.STRING,
       },
       description: {
         type: Sequelize.STRING(1000),
-      },
-      category: {
-        type: Sequelize.STRING,
       },
       semestersFromGrad: {
         type: Sequelize.INTEGER,
@@ -27,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
       canUpload: {
         type: Sequelize.TINYINT(1),
       },
-      prereq: {
+      prereqName: {
         type: Sequelize.STRING,
       },
       hyperLink: {
