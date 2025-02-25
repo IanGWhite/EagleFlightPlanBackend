@@ -13,9 +13,11 @@ exports.create = (req, res) => {
   // Create a Student
   const student = {
     userId: req.param.userId,
-    fName: req.body.fName,
-    lName: req.body.lName,
     studentId: req.param.studentId,
+    studentIdNo: req.body.studentIdNo,
+    estimatedGradSemester: req.body.estimatedGradSemester,
+    points: req.body.points,
+    semestersFromGrad: req.body.semestersFromGrad,
   };
   // Save Student in the database
   Student.create(student)

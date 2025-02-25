@@ -13,6 +13,18 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
+    isStudent: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+    },
+    fName: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    lName: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     // refresh_token: {
     //   type: Sequelize.STRING(512),
     //   allowNull: true
