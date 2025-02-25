@@ -4,12 +4,14 @@ const Op = db.Sequelize.Op;
 // Create and Save a new EagleExperienceMajor
 exports.create = (req, res) => {
   //Validate request
+  /*
   if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
     return;
   }
+  */
 
   // Create a EagleExperienceMajor
   const eagleExperienceMajor = {

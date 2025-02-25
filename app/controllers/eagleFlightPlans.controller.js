@@ -4,16 +4,17 @@ const Op = db.Sequelize.Op;
 // Create and Save a new EagleFlightPlan
 exports.create = (req, res) => {
   //Validate request
+  /*
   if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
     return;
   }
-
+  */
   // Create a EagleFlightPlan
   const eagleFlightPlan = {
-    name: req.body.name,
+    
   };
   // Save EagleFlightPlan in the database
   EagleFlightPlan.create(eagleFlightPlan)
