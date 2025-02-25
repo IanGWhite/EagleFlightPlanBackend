@@ -59,6 +59,14 @@ db.badgeTasks = require("./badgeTasks.model.js")(sequelize, Sequelize);
 db.studentStrengths = require("./studentStrengths.model.js")(sequelize, Sequelize);
 db.studentMajors = require("./studentMajors.model.js")(sequelize, Sequelize);
 db.badges = require("./badges.model.js")(sequelize, Sequelize);
+db.majors = require("./majors.model.js")(sequelize, Sequelize);
+db.strengths = require("./strengths.model.js")(sequelize, Sequelize);
+db.eagleExperienceMajors = require("./eagleExperienceMajors.model.js")(sequelize, Sequelize);
+db.eagleTaskMajors = require("./eagleTaskMajors.model.js")(sequelize, Sequelize);
+db.eagleFlightPlans = require("./eagleFlightPlans.model.js")(sequelize, Sequelize);
+db.badgeEvents = require("./badgeEvents.model.js")(sequelize, Sequelize);
+
+
 
 // foreign key for session
 db.user.hasMany(
