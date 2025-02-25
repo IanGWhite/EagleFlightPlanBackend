@@ -73,6 +73,18 @@ require("./app/routes/studentStrengths.routes")(app);
 require("./app/routes/studentMajors.routes")(app);
 require("./app/routes/badges.routes")(app);
 
+require("./app/routes/document.routes")(app);
+require("./app/routes/role.routes")(app);
+require("./app/routes/event.routes")(app);
+require("./app/routes/eventAttended.routes")(app);
+require("./app/routes/pointLog.routes")(app);
+require("./app/routes/studentEagleTask.routes")(app);
+require("./app/routes/eagleTask.routes")(app);
+require("./app/routes/userRole.routes")(app);
+require("./app/routes/eagleExperienceEvent.routes")(app);
+require("./app/routes/semester.routes")(app);
+require("./app/routes/shopItem.routes")(app);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3035;
 if (process.env.NODE_ENV !== "test") {
