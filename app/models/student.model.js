@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     points: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
     },
     semestersFromGrad: {
       type: Sequelize.STRING,
