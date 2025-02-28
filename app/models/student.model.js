@@ -6,6 +6,9 @@ module.exports = (sequelize, Sequelize) => {
     lName: {
       type: Sequelize.STRING,
     },
+    semesterId: {
+      type: Sequelize.STRING,
+    },
   },{ timestamps: false });
   return Student;
 };

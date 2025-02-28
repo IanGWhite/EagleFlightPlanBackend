@@ -15,6 +15,8 @@ exports.create = (req, res) => {
 
   // Create a UserRole
   const userRole = {
+    userId: req.params.userId,
+    roleId: req.params.roleId
   };
   // Save UserRole in the database
   UserRole.create(userRole)

@@ -3,23 +3,28 @@ module.exports = (app) => {
   const { authenticate } = require("../authorization/authorization.js");
   var router = require("express").Router();
 
-  // Create a new BadgeTasks
-  router.post("/", badgeTasks.create);
+  // Create a new badgeTask for a badge
+  //router.post("/:/badgeTasks/", [authenticate], badgeTasks.create);
+  router.post("/:badgesId/badgeTasks/:eagleTaskId", badgeTasks.create);
 
-  // Retrieve all BadgeTasks
-  router.get("/", badgeTasks.findAll);
+  // Retrieve all badgeTasks for a badge
+  router.get(
+    "/:badgesId/badgeTasks/",
+    badgeTasks.findAll
+  );
 
-  // Retrieve a single BadgeTasks with id
-  router.get("/:id",badgeTasks.findOne);
+  // Retrieve a single badgeTask with id
+  //router.get("/:/badgeTasks/:id", [authenticate], badgeTasks.findOne);
+  router.get("/:badgesId/badgeTasks/:id", badgeTasks.findOne);
 
-  // Update a BadgeTasks with id
-  router.put("/:id", badgeTasks.update);
+  // Update a badgeTask with id
+  router.put("/:badgesId/badgeTasks/:id", badgeTasks.update);
 
-  // Delete a BadgeTasks with id
-  router.delete("/:id",badgeTasks.delete);
+  // Delete a badgeTask with id
+  router.delete("/:badgesId/badgeTasks/:id", badgeTasks.delete);
 
-  // Delete all BadgeTasks
-  router.delete("/", badgeTasks.deleteAll);
+  // Delete all badgeTasks
+  router.delete("/:badgesId/badgeTasks/deleteAll", badgeTasks.deleteAll);
 
-  app.use("/flight-plan-t5/badgeTasks", router);
+  app.use("/flight-plan-t5/badges", router);
 };

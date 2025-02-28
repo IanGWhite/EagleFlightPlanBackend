@@ -13,8 +13,8 @@ exports.create = (req, res) => {
 
   // Create a StudentMajors
   const studentMajors = {
-    // studentId: req.params.studentId,
-    // badgesId: req.params.badgesId,
+    studentId: req.params.studentId,
+    majorId: req.params.majorId,
   };
   // Save StudentMajors in the database
   StudentMajors.create(studentMajors)

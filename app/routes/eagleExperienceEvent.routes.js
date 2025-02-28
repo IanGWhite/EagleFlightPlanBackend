@@ -1,31 +1,25 @@
 module.exports = (app) => {
-    const eagleExperienceEvents = require("../controllers/eagleExperienceEvent.controller.js");
-    const { authenticate } = require("../authorization/authorization.js");
-    var router = require("express").Router();
-  
-    // Create a new EagleExperienceEvent for a Student
-    //router.post("/:studentId/eagleExperienceEvents/", [authenticate], eagleExperienceEvents.create);
-    router.post("/eagleExperienceEvents/", eagleExperienceEvents.create);
-  
-    // Retrieve all EagleExperienceEvents for a Student
-    router.get(
-      "/eagleExperienceEvents/",
-      eagleExperienceEvents.findAll
-    );
-  
-    // Retrieve a single EagleExperienceEvent with id
-    //router.get("/:studentId/eagleExperienceEvents/:id", [authenticate], eagleExperienceEvents.findOne);
-    router.get("/eagleExperienceEvents/:id", eagleExperienceEvents.findOne);
-  
-    // Update a EagleExperienceEvent with id
-    router.put("/eagleExperienceEvents/:id", eagleExperienceEvents.update);
-  
-    // Delete a EagleExperienceEvent with id
-    router.delete("/eagleExperienceEvents/:id", eagleExperienceEvents.delete);
-  
-    // Delete all EagleExperienceEvents
-    router.delete("/eagleExperienceEvents/deleteAll", eagleExperienceEvents.deleteAll);
-  
-    app.use("/flight-plan-t5", router);
-  };
+  const eagleExperienceEvents = require("../controllers/eagleExperienceEvent.controller.js");
+  const { authenticate } = require("../authorization/authorization.js");
+  var router = require("express").Router();
+
+  // Create a new eagleExperienceEvent for a Experience
+  //router.post("/:eagleExperiencesId/eagleExperienceEvents/", [authenticate], eagleExperienceEvents.create);
+  router.post("/:eagleExperiencesId/eagleExperienceEvents/:eventId", eagleExperienceEvents.create);
+
+  // Retrieve a single eagleExperienceEvent with id
+  //router.get("/:eagleExperiencesId/eagleExperienceEvents/:id", [authenticate], eagleExperienceEvents.findOne);
+  router.get("/:eagleExperiencesId/eagleExperienceEvents/:id", eagleExperienceEvents.findOne);
+
+  // Update a eagleExperienceEvent with id
+  router.put("/:eagleExperiencesId/eagleExperienceEvents/:id", eagleExperienceEvents.update);
+
+  // Delete a eagleExperienceEvent with id
+  router.delete("/:eagleExperiencesId/eagleExperienceEvents/:id", eagleExperienceEvents.delete);
+
+  // Delete all eagleExperienceEvents
+  router.delete("/:eagleExperiencesId/eagleExperienceEvents/deleteAll", eagleExperienceEvents.deleteAll);
+
+  app.use("/flight-plan-t5/eagleExperiences", router);
+}
   

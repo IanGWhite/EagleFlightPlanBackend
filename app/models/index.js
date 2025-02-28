@@ -93,6 +93,23 @@ db.student.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+//userRole
+db.userRole.belongsTo(
+  db.user,
+  { as: "user" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.user.hasOne(
+  db.userRole,
+  { as: "userRole" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.role.hasMany(
+  db.userRole, 
+  {as: "userRole"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+)
+
 // foreign key for lessons
 db.student.hasMany(
   db.lesson,
@@ -353,5 +370,257 @@ db.skill.hasMany(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+//eagleFlightPlans
+db.eagleFlightPlans.belongsTo(
+  db.student,
+  { as: "student" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.student.hasMany(
+  db.eagleFlightPlans,
+  { as: "eagleFlightPlans" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+db.semester.hasMany(
+  db.eagleFlightPlans,
+  { as: "eagleFlightPlans" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//Strengths 
+db.studentStrengths.belongsTo(
+  db.student,
+  { as: "student" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.student.hasMany(
+  db.studentStrengths,
+  { as: "studentStrengths" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+db.strengths.hasMany(
+  db.studentStrengths,
+  {as: "studentStrengths"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//majors
+db.studentMajors.belongsTo(
+  db.student,
+  { as: "student" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.student.hasOne(
+  db.studentMajors,
+  { as: "studentMajors" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.majors.hasMany(
+  db.studentMajors,
+  {as: "studentMajors"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//eventAttended
+db.eventAttended.belongsTo(
+  db.student,
+  { as: "student" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.student.hasMany(
+  db.eventAttended,
+  { as: "eventAttended" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.event.hasMany(
+  db.eventAttended,
+  {as: "eventAttended"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//pointLog
+db.pointLog.belongsTo(
+  db.student,
+  { as: "student" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.student.hasMany(
+  db.pointLog,
+  { as: "pointLog" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.shopItem.hasMany(
+  db.pointLog, 
+  {as: "pointLog"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//studentBadges
+
+db.studentBadges.belongsTo(
+  db.student,
+  { as: "student" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.student.hasMany(
+  db.studentBadges,
+  { as: "studentBadges" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.badges.hasMany(
+  db.studentBadges, 
+  {as: "studentBadges"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//documents
+db.document.belongsTo(
+  db.student,
+  { as: "student" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.student.hasMany(
+  db.document,
+  { as: "document" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//badgeEvents
+db.badgeEvents.belongsTo(
+  db.badges,
+  { as: "badges" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.badges.hasMany(
+  db.badgeEvents,
+  { as: "badgeEvents" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.event.hasMany(
+  db.badgeEvents, 
+  {as: "badgeEvents"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//badgeExperiences
+db.badgeExperiences.belongsTo(
+  db.badges,
+  { as: "badges" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.badges.hasMany(
+  db.badgeExperiences,
+  { as: "badgeExperiences" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleExperiences.hasMany(
+  db.badgeExperiences, 
+  {as: "badgeExperiences"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//badgeTasks
+db.badgeTasks.belongsTo(
+  db.badges,
+  { as: "badges" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.badges.hasMany(
+  db.badgeTasks,
+  { as: "badgeTasks" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleTask.hasMany(
+  db.badgeTasks, 
+  {as: "badgeTasks"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//studentEagleTask
+db.studentEagleTask.belongsTo(
+  db.eagleFlightPlans,
+  { as: "eagleFlightPlans" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleFlightPlans.hasMany(
+  db.studentEagleTask,
+  { as: "studentEagleTask" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleTask.hasMany(
+  db.studentEagleTask, 
+  {as: "studentEagleTask"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//studentEagleExperiences
+db.studentEagleExperiences.belongsTo(
+  db.eagleFlightPlans,
+  { as: "eagleFlightPlans" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleFlightPlans.hasMany(
+  db.studentEagleExperiences,
+  { as: "studentEagleExperiences" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleExperiences.hasMany(
+  db.studentEagleExperiences, 
+  {as: "studentEagleExperiences"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//eagleExperienceEvent
+db.eagleExperienceEvent.belongsTo(
+  db.eagleExperiences,
+  { as: "eagleExperiences" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleExperiences.hasMany(
+  db.eagleExperienceEvent,
+  { as: "eagleExperienceEvent" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.event.hasMany(
+  db.eagleExperienceEvent, 
+  {as: "eagleExperienceEvent"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//eagleExperienceMajor
+db.eagleExperienceMajors.belongsTo(
+  db.eagleExperiences,
+  { as: "eagleExperiences" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleExperiences.hasMany(
+  db.eagleExperienceMajors,
+  { as: "eagleExperienceMajors" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.majors.hasMany(
+  db.eagleExperienceMajors, 
+  {as: "eagleExperienceMajors"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+//eagleTaskMajors
+db.eagleTaskMajors.belongsTo(
+  db.eagleTask,
+  { as: "eagleExperiences" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.eagleTask.hasMany(
+  db.eagleTaskMajors,
+  { as: "eagleTaskMajors" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.majors.hasMany(
+  db.eagleTaskMajors, 
+  {as: "eagleTaskMajors"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 module.exports = db;

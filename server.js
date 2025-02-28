@@ -87,7 +87,7 @@ require("./app/routes/shopItem.routes")(app);
 require("./app/routes/majors.routes")(app);
 require("./app/routes/strengths.routes")(app);
 require("./app/routes/eagleExperienceMajors.routes")(app);
-require("./app/routes/eagleTaskMajors.routes")(app);
+require("./app/routes/eagleTaskMajors.routes")(app); 
 require("./app/routes/eagleFlightPlans.routes")(app);
 require("./app/routes/badgeEvents.routes")(app);
  

@@ -3,23 +3,29 @@ module.exports = (app) => {
   const { authenticate } = require("../authorization/authorization.js");
   var router = require("express").Router();
 
-  // Create a new StudentEagleExperiences
-  router.post("/", studentEagleExperiences.create);
+  // Create a new StudentEagleExperience for a Student
+  //router.post("/:studentId/studentEagleExperiences/", [authenticate], studentEagleExperiences.create);
+  router.post("/:studentId/eagleFlightPlans/:eagleFlightPlansId/studentEagleExperiences/:eagleExperiencesId", studentEagleExperiences.create);
 
-  // Retrieve all People
-  router.get("/", studentEagleExperiences.findAll);
 
-  // Retrieve a single StudentEagleExperiences with id
-  router.get("/:id",studentEagleExperiences.findOne);
+  // Retrieve all StudentEagleExperiences for a student
+  router.get(
+    "/:studentId/eagleFlightPlans/:eagleFlightPlansId/studentEagleExperiences/",
+    studentEagleExperiences.findAllForStudent
+  );
 
-  // Update a StudentEagleExperiences with id
-  router.put("/:id", studentEagleExperiences.update);
+  // Retrieve a single StudentEagleExperience with id
+  //router.get("/:studentId/studentEagleExperiences/:id", [authenticate], studentEagleExperiences.findOne);
+  router.get("/:studentId/eagleFlightPlans/:eagleFlightPlansId/studentEagleExperiences/:id", studentEagleExperiences.findOne);
 
-  // Delete a StudentEagleExperiences with id
-  router.delete("/:id",studentEagleExperiences.delete);
+  // Update a StudentEagleExperience with id
+  router.put("/:studentId/eagleFlightPlans/:eagleFlightPlansId/studentEagleExperiences/:id", studentEagleExperiences.update);
+
+  // Delete a StudentEagleExperience with id
+  router.delete("/:studentId/eagleFlightPlans/:eagleFlightPlansId/studentEagleExperiences/:id", studentEagleExperiences.delete);
 
   // Delete all StudentEagleExperiences
-  router.delete("/", studentEagleExperiences.deleteAll);
+  router.delete("/:studentId/eagleFlightPlans/:eagleFlightPlansId/studentEagleExperiences/deleteAll", studentEagleExperiences.deleteAll);
 
-  app.use("/flight-plan-t5/studentEagleExperiences", router);
+  app.use("/flight-plan-t5/students", router);
 };

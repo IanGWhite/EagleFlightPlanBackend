@@ -5,27 +5,27 @@ module.exports = (app) => {
   
     // Create a new Document for a Student
     //router.post("/:/documents/", [authenticate], documents.create);
-    router.post("/documents/", documents.create);
+    router.post("/:studentId/documents/", documents.create);
   
     // Retrieve all Documents for a Student
     router.get(
-      "/documents/",
+      "/:studentId/documents/",
       documents.findAll
     );
   
     // Retrieve a single Document with id
     //router.get("/:/documents/:id", [authenticate], documents.findOne);
-    router.get("/documents/:id", documents.findOne);
+    router.get("/:studentId/documents/:id", documents.findOne);
   
     // Update a Document with id
-    router.put("/documents/:id", documents.update);
+    router.put("/:studentId/documents/:id", documents.update);
   
     // Delete a Document with id
-    router.delete("/documents/:id", documents.delete);
+    router.delete("/:studentId/documents/:id", documents.delete);
   
     // Delete all Documents
-    router.delete("/documents/deleteAll", documents.deleteAll);
+    router.delete("/:studentId/documents/deleteAll", documents.deleteAll);
   
-    app.use("/flight-plan-t5", router);
+    app.use("/flight-plan-t5/students", router);
   };
   

@@ -3,23 +3,28 @@ module.exports = (app) => {
   const { authenticate } = require("../authorization/authorization.js");
   var router = require("express").Router();
 
-  // Create a new BadgeEvents
-  router.post("/", badgeEvents.create);
+  // Create a new badgeEvent for a badge
+  //router.post("/:/badgeEvents/", [authenticate], badgeEvents.create);
+  router.post("/:badgesId/badgeEvents/:eventId", badgeEvents.create);
 
-  // Retrieve all BadgeEvents
-  router.get("/", badgeEvents.findAll);
+  // Retrieve all badgeEvents for a badge
+  router.get(
+    "/:badgesId/badgeEvents/",
+    badgeEvents.findAll
+  );
 
-  // Retrieve a single BadgeEvents with id
-  router.get("/:id",badgeEvents.findOne);
+  // Retrieve a single badgeEvent with id
+  //router.get("/:/badgeEvents/:id", [authenticate], badgeEvents.findOne);
+  router.get("/:badgesId/badgeEvents/:id", badgeEvents.findOne);
 
-  // Update a BadgeEvents with id
-  router.put("/:id", badgeEvents.update);
+  // Update a badgeEvent with id
+  router.put("/:badgesId/badgeEvents/:id", badgeEvents.update);
 
-  // Delete a BadgeEvents with id
-  router.delete("/:id",badgeEvents.delete);
+  // Delete a badgeEvent with id
+  router.delete("/:badgesId/badgeEvents/:id", badgeEvents.delete);
 
-  // Delete all BadgeEvents
-  router.delete("/", badgeEvents.deleteAll);
+  // Delete all badgeEvents
+  router.delete("/:badgesId/badgeEvents/deleteAll", badgeEvents.deleteAll);
 
-  app.use("/flight-plan-t5/badgeEvents", router);
+  app.use("/flight-plan-t5/badges", router);
 };

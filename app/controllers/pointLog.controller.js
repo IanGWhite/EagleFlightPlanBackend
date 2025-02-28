@@ -15,11 +15,11 @@ exports.create = (req, res) => {
 
   // Create a PointLog
   const pointLog = {
+    studentId: req.params.studentId,
+    shopItemId: req.params.shopItemId,
     approvedBy: req.body.approvedBy,
     pointDifference: req.body.pointDifference,
     date: req.body.date,
-    studentId: req.params.studentId,
-    shopItemId: req.body.shopItemId,
   };
   // Save PointLog in the database
   PointLog.create(pointLog)

@@ -15,6 +15,9 @@ exports.create = (req, res) => {
 
   // Create a StudentEagleTask
   const studentEagleTask = {
+    studentId: req.params.studentId,
+    eagleTaskId: req.params.eagleTaskId,
+    eagleFlightPlansId: req.params.eagleFlightPlansId,
     pointsAwarded: req.body.pointsAwarded,
     approvedBy: req.body.approvedBy,
     completionDate: req.body.completionDate,

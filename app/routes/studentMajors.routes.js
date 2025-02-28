@@ -3,23 +3,29 @@ module.exports = (app) => {
   const { authenticate } = require("../authorization/authorization.js");
   var router = require("express").Router();
 
-  // Create a new StudentMajors
-  router.post("/", studentMajors.create);
+  // Create a new StudentMajor for a Student
+  //router.post("/:studentId/studentMajors/", [authenticate], studentMajors.create);
+  router.post("/:studentId/studentMajors/:majorId", studentMajors.create);
 
-  // Retrieve all StudentMajors
-  router.get("/", studentMajors.findAll);
 
-  // Retrieve a single StudentMajors with id
-  router.get("/:id",studentMajors.findOne);
+  // Retrieve all StudentMajors for a student
+  router.get(
+    "/:studentId/studentMajors/",
+    studentMajors.findAllForStudent
+  );
 
-  // Update a StudentMajors with id
-  router.put("/:id", studentMajors.update);
+  // Retrieve a single StudentMajor with id
+  //router.get("/:studentId/studentMajors/:id", [authenticate], studentMajors.findOne);
+  router.get("/:studentId/studentMajors/:id", studentMajors.findOne);
 
-  // Delete a StudentMajors with id
-  router.delete("/:id",studentMajors.delete);
+  // Update a StudentMajor with id
+  router.put("/:studentId/studentMajors/:id", studentMajors.update);
+
+  // Delete a StudentMajor with id
+  router.delete("/:studentId/studentMajors/:id", studentMajors.delete);
 
   // Delete all StudentMajors
-  router.delete("/", studentMajors.deleteAll);
+  router.delete("/:studentId/studentMajors/deleteAll", studentMajors.deleteAll);
 
-  app.use("/flight-plan-t5/studentMajors", router);
+  app.use("/flight-plan-t5/students", router);
 };
