@@ -11,7 +11,7 @@ module.exports = (app) => {
   // Retrieve all StudentBadges for a user
   router.get(
     "/:userId/userRoles/",
-    userRoles.findAllForStudent
+    userRoles.findAllForUser
   );
 
   // Retrieve a single StudentBadge with id

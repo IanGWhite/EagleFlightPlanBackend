@@ -52,10 +52,10 @@ exports.findAll = (req, res) => {
     });
 };
 // Retrieve all UserRoles for a student from the database.
-exports.findAllForStudent = (req, res) => {
-  const studentId = req.params.studentId;
+exports.findAllForUser = (req, res) => {
+  const userId = req.params.userId;
 
-  UserRole.findAll({ where: { studentId: studentId } })
+  UserRole.findAll({ where: { userId: userId } })
     .then((data) => {
       res.send(data);
     })
