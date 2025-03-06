@@ -4,8 +4,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      category: {
-        type: Sequelize.STRING,
+      categoryId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       description: {

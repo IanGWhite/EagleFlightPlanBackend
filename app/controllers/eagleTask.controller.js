@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 
   // Create a EagleTask
   const eagleTask = {
-    category: req.body.category,
+    categoryId: req.body.categoryId,
     name: req.body.name,
     description: req.body.description,
     semestersFromGrad: req.body.semestersFromGrad,
