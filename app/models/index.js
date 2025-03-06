@@ -539,14 +539,24 @@ db.eagleTask.hasMany(
 );
 
 //studentEagleTask
+// db.studentEagleTask.belongsTo(
+//   db.eagleFlightPlans,
+//   { as: "eagleFlightPlans" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+// db.eagleFlightPlans.hasMany(
+//   db.studentEagleTask,
+//   { as: "studentEagleTask" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
 db.studentEagleTask.belongsTo(
   db.eagleFlightPlans,
-  { as: "eagleFlightPlans" },
+  { as: "eagleFlightPlan" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 db.eagleFlightPlans.hasMany(
   db.studentEagleTask,
-  { as: "studentEagleTask" },
+  { as: "studentEagleTasks" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 db.eagleTask.hasMany(
@@ -558,7 +568,7 @@ db.eagleTask.hasMany(
 //studentEagleExperiences
 db.studentEagleExperiences.belongsTo(
   db.eagleFlightPlans,
-  { as: "eagleFlightPlans" },
+  { as: "eagleFlightPlan" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 db.eagleFlightPlans.hasMany(
