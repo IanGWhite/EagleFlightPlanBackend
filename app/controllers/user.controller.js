@@ -18,9 +18,12 @@ exports.create = (req, res) => {
   const user = {
     id: req.body.id,
     email: req.body.email,
-    admin: 0
+    admin: 0,
     // refresh_token: req.body.refresh_token,
     // expiration_date: req.body.expiration_date
+    isStudent: 1,
+    fName: req.body.fName,
+    lName: req.body.lName
   };
 
   // Save User in the database
