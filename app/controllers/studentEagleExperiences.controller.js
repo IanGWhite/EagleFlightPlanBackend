@@ -13,7 +13,9 @@ exports.create = (req, res) => {
 
   // Create a StudentEagleExperiences
   const studentEagleExperiences = {
-    //add in Id of things
+    studentId: req.params.studentId,
+    eagleExperiencesId: req.params.eagleExperiencesId,
+    eagleFlightPlanId: req.params.eagleFlightPlanId,
     pointsAwarded: req.body.pointsAwarded,
     approvedBy: req.body.approvedBy,
     completionDate: req.body.completionDate,

@@ -15,7 +15,8 @@ exports.create = (req, res) => {
 
   // Create a EventAttended
   const eventAttended = {
-
+    studentId: req.params.studentId,
+    eventId: req.params.eventId,
   };
   // Save EventAttended in the database
   EventAttended.create(eventAttended)

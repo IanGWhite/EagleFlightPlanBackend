@@ -14,7 +14,7 @@ exports.create = (req, res) => {
   // Create a Badges
   const badges = {
     name: req.body.name,
-    descripition: req.body.descripition,
+    description: req.body.description,
     type: req.body.type,
     points: req.body.points,
     imageLink: req.body.imageLink,

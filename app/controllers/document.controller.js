@@ -14,6 +14,7 @@ exports.create = (req, res) => {
   */
   // Create a Document
   const document = {
+    studentId: req.params.studentId,
     name: req.body.name,
     file: req.body.file,
   };

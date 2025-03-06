@@ -18,7 +18,7 @@ exports.create = (req, res) => {
     description: req.body.description,
     date: req.body.date,
     location: req.body.location,
-    startTime: req.body.date,
+    startTime: req.body.startTime,
     endTime: req.body.endTime,
   };
   // Save Event in the database

@@ -15,7 +15,8 @@ exports.create = (req, res) => {
 
   // Create a EagleExperienceMajor
   const eagleExperienceMajor = {
-
+    eagleExperiencesId: req.params.eagleExperiencesId,
+    majorId: req.params.majorId,
   };
   // Save EagleExperienceMajor in the database
   EagleExperienceMajor.create(eagleExperienceMajor)

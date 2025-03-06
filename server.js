@@ -7,7 +7,7 @@ const app = express();
 console.log('test hello');
 const db = require("./app/models");
 
-db.sequelize.sync({force: true});
+db.sequelize.sync({force: false});
 
 var corsOptions = {
   origin: "http://localhost:8081",
@@ -87,7 +87,7 @@ require("./app/routes/shopItem.routes")(app);
 require("./app/routes/majors.routes")(app);
 require("./app/routes/strengths.routes")(app);
 require("./app/routes/eagleExperienceMajors.routes")(app);
-require("./app/routes/eagleTaskMajors.routes")(app);
+require("./app/routes/eagleTaskMajors.routes")(app); 
 require("./app/routes/eagleFlightPlans.routes")(app);
 require("./app/routes/badgeEvents.routes")(app);
  

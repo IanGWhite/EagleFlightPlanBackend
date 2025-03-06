@@ -15,7 +15,8 @@ exports.create = (req, res) => {
 
   // Create a EagleExperienceEvent
   const eagleExperienceEvent = {
-
+    eagleExperiencesId: req.params.eagleExperiencesId,
+    eventId: req.params.eventId,
   };
   // Save EagleExperienceEvent in the database
   EagleExperienceEvent.create(eagleExperienceEvent)

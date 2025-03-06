@@ -14,7 +14,8 @@ exports.create = (req, res) => {
   */
   // Create a EagleFlightPlan
   const eagleFlightPlan = {
-    
+    studentId: req.params.studentId,
+    semesterId: req.params.semesterId,
   };
   // Save EagleFlightPlan in the database
   EagleFlightPlan.create(eagleFlightPlan)

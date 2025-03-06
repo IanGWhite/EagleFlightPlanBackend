@@ -14,7 +14,8 @@ exports.create = (req, res) => {
   */
   // Create a EagleTaskMajor
   const eagleTaskMajor = {
-
+    eagleTaskId: req.params.eagleTaskId,
+    majorId: req.params.majorId,
   };
   // Save EagleTaskMajor in the database
   EagleTaskMajor.create(eagleTaskMajor)

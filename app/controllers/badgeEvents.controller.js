@@ -13,8 +13,8 @@ exports.create = (req, res) => {
 
   // Create a BadgeEvents
   const badgeEvents = {
-    // eagleExperienceId: req.params.eagleExperienceId,
-    // badgesId: req.params.badgesId,
+    eventId: req.params.eventId,
+    badgesId: req.params.badgesId,
   };
   // Save BadgeEvents in the database
   BadgeEvents.create(badgeEvents)
