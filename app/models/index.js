@@ -66,7 +66,7 @@ db.eagleTaskMajors = require("./eagleTaskMajors.model.js")(sequelize, Sequelize)
 db.eagleFlightPlans = require("./eagleFlightPlans.model.js")(sequelize, Sequelize);
 db.badgeEvents = require("./badgeEvents.model.js")(sequelize, Sequelize);
 
-
+db.category = require("./category.model.js")(sequelize, Sequelize);
 
 // foreign key for session
 db.user.hasMany(

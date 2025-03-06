@@ -90,7 +90,7 @@ require("./app/routes/eagleExperienceMajors.routes")(app);
 require("./app/routes/eagleTaskMajors.routes")(app); 
 require("./app/routes/eagleFlightPlans.routes")(app);
 require("./app/routes/badgeEvents.routes")(app);
- 
+require("./app/routes/category.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 3035;
 if (process.env.NODE_ENV !== "test") {

@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      category: {
+      categoryId: {
         type: Sequelize.STRING,
         allowNull: false,
       },

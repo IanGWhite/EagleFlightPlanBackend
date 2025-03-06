@@ -13,7 +13,7 @@ exports.create = (req, res) => {
 
   // Create a EagleExperiences
   const eagleExperiences = {
-    category: req.body.category,
+    categoryId: req.body.categoryId,
     name: req.body.name,
     description: req.body.description,
     points: req.body.points,

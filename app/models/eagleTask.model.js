@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const EagleTask = sequelize.define("eagleTask", {
-      category: {
+      categoryId: {
         type: Sequelize.STRING,
       },
       name: {

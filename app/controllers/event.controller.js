@@ -14,7 +14,7 @@ exports.create = (req, res) => {
   // Create a Event
   const event = {
     name: req.body.name,
-    category: req.body.category,
+    categoryId: req.body.categoryId,
     description: req.body.description,
     date: req.body.date,
     location: req.body.location,
