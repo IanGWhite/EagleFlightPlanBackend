@@ -24,7 +24,7 @@ exports.create = (req, res) => {
     rationale: req.body.rationale,
     canUpload: req.body.canUpload,
     prereqName: req.body.prereqName,
-    hyperLink: req.body.hyperlink,
+    hyperLink: req.body.hyperLink,
   };
   // Save EagleTask in the database
   EagleTask.create(eagleTask)
