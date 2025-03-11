@@ -20,6 +20,7 @@ exports.create = (req, res) => {
     location: req.body.location,
     startTime: req.body.startTime,
     endTime: req.body.endTime,
+    hyperLink: req.body.hyperLink,
   };
   // Save Event in the database
   Event.create(event)
