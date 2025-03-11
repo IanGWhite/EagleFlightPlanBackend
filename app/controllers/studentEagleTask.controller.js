@@ -1,5 +1,6 @@
 const db = require("../models");
 const StudentEagleTask = db.studentEagleTask;
+const eagleFlightPlan = db.eagleFlightPlans;
 const Op = db.Sequelize.Op;
 // Create and Save a new StudentEagleTask
 exports.create = (req, res) => {
@@ -62,16 +63,35 @@ exports.findAll = (req, res) => {
 exports.findAllForStudent = (req, res) => {
   const studentId = req.params.studentId;
 
-  StudentEagleTask.findAll({ where: { studentId: studentId } })
-    .then((data) => {
-      res.send(data);
+  // First, get all EagleFlightPlans for the given studentId
+  eagleFlightPlan.findAll({
+    where: { studentId: studentId }, // Filter by studentId
+  })
+    .then((eagleFlightPlan) => {
+      if (!eagleFlightPlan || eagleFlightPlan.length === 0) {
+        return res.status(404).send({ message: 'No flight plans found for this student.' });
+      }
+
+      // Extract the IDs of the EagleFlightPlans
+      const eagleFlightPlanId = eagleFlightPlan.map(eagleFlightPlan => eagleFlightPlan.id);
+
+      // Now, get all StudentEagleTasks associated with these EagleFlightPlans
+      return StudentEagleTask.findAll({
+        where: {
+          eagleFlightPlanId: eagleFlightPlanId, // Filter by the eagleFlightPlanId
+        },
+      });
+    })
+    .then((tasks) => {
+      res.send(tasks); // Return the StudentEagleTasks
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while retrieving studentEagleTasks.",
+        message: err.message || 'Some error occurred while retrieving tasks.',
       });
     });
 };
+
 // Find a single StudentEagleTask with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;

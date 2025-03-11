@@ -1,5 +1,6 @@
 const db = require("../models");
 const StudentEagleExperiences = db.studentEagleExperiences;
+const eagleFlightPlan = db.eagleFlightPlans;
 const Op = db.Sequelize.Op;
 // Create and Save a new StudentEagleExperiences
 exports.create = (req, res) => {
@@ -55,17 +56,35 @@ exports.findAll = (req, res) => {
       });
     });
 };
-// Retrieve all StudentEagleExperiencess for a student from the database.
+// Retrieve all StudentEagleExperiences for a student from the database.
 exports.findAllForStudent = (req, res) => {
   const studentId = req.params.studentId;
 
-  StudentEagleExperiences.findAll({ where: { studentId: studentId } })
-    .then((data) => {
-      res.send(data);
+  // First, get all EagleFlightPlans for the given studentId
+  eagleFlightPlan.findAll({
+    where: { studentId: studentId }, // Filter by studentId
+  })
+    .then((eagleFlightPlan) => {
+      if (!eagleFlightPlan || eagleFlightPlan.length === 0) {
+        return res.status(404).send({ message: 'No flight plans found for this student.' });
+      }
+
+      // Extract the IDs of the EagleFlightPlans
+      const eagleFlightPlanId = eagleFlightPlan.map(eagleFlightPlan => eagleFlightPlan.id);
+
+      // Now, get all StudentEagleExperiences associated with these EagleFlightPlans
+      return StudentEagleExperiences.findAll({
+        where: {
+          eagleFlightPlanId: eagleFlightPlanId, // Filter by the eagleFlightPlanId
+        },
+      });
+    })
+    .then((experience) => {
+      res.send(experience); // Return the StudentEagleExperiences
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while retrieving studentEagleExperiencess.",
+        message: err.message || 'Some error occurred while retrieving experience.',
       });
     });
 };

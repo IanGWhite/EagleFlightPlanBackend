@@ -3,18 +3,16 @@ module.exports = (app) => {
     const { authenticate } = require("../authorization/authorization.js");
     var router = require("express").Router();
   
-    // Create a new Event for a Student
-    //router.post("/:studentId/events/", [authenticate], events.create);
+    // Create a new Event
     router.post("/events/", events.create);
   
-    // Retrieve all Events for a Student
+    // Retrieve all Events
     router.get(
       "/events/",
       events.findAll
     );
   
     // Retrieve a single Event with id
-    //router.get("/:studentId/events/:id", [authenticate], events.findOne);
     router.get("/events/:id", events.findOne);
   
     // Update a Event with id
