@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   const EagleExperiences = sequelize.define("eagleExperiences", {
     categoryId: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
     name: {
