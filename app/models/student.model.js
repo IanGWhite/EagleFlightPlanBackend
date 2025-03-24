@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     points:{
-      type: Sequelize.INT,
+      type: Sequelize.INTEGER,
     },
     semestersFromGrad:{ 
       type: Sequelize.STRING,
