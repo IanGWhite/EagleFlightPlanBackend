@@ -4,23 +4,22 @@ module.exports = (app) => {
   var router = require("express").Router();
 
   // Create a new Student
-  //router.post("/", [authenticate], students.create);
-  router.post("/", students.create);
+  router.post("/:userId", students.create);
 
   // find all students
   router.get("/", students.findAll);
 
-  // Retrieve all Students for user
+  // Retrieve Student for user
   router.get("/userStudent/:userId", students.findAllForUser);
 
   // Retrieve a single Student with id
   router.get("/:id", students.findOne);
 
   // Update a Student with id
-  router.put("/:id", [authenticate], students.update);
+  router.put("/:id", students.update);
 
   // Delete a Student with id
-  router.delete("/:id", [authenticate], students.delete);
+  router.delete("/:id", students.delete);
 
   app.use("/flight-plan-t5/students", router);
 };

@@ -6,8 +6,17 @@ module.exports = (sequelize, Sequelize) => {
     lName: {
       type: Sequelize.STRING,
     },
-    semesterId: {
+    studentIdNo:{ 
+      type: Sequelize.INTEGER,
+    },
+    estimatedGradSemester:{ 
       type: Sequelize.STRING,
+    },
+    points:{
+      type: Sequelize.INTEGER,
+    },
+    semestersFromGrad:{ 
+      type: Sequelize.INTEGER,
     },
   },{ timestamps: false });
   return Student;
