@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   }
   // Create a Student
   const student = {
-    userId: req.param.userId,
+    userId: req.params.userId,
     fName: req.body.fName,
     lName: req.body.lName,
     studentIdNo: req.body.studentIdNo,
