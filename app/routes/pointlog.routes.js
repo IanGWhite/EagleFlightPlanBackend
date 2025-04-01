@@ -6,14 +6,11 @@ module.exports = (app) => {
     // Create a new PointLog for a Student
     //router.post("/:studentId/pointLogs/", [authenticate], pointLogs.create);
     router.post("/:studentId/pointLogs/", pointLogs.create);
-
-    // Create a new PointLog for a Student with shop item
-    router.post("/:studentId/pointLogs/:shopItemId", pointLogs.create);
   
     // Retrieve all PointLogs for a Student
     router.get(
       "/:studentId/pointLogs/",
-      pointLogs.findAll
+      pointLogs.findAllForStudent
     );
   
     // Retrieve a single PointLog with id
