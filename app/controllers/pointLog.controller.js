@@ -18,6 +18,7 @@ exports.create = (req, res) => {
     studentId: req.params.studentId,
     shopItemId: req.params.shopItemId,
     approvedBy: req.body.approvedBy,
+    name: req.body.name,
     pointDifference: req.body.pointDifference,
     date: req.body.date,
   };
