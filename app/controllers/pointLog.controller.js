@@ -16,8 +16,8 @@ exports.create = (req, res) => {
   // Create a PointLog
   const pointLog = {
     studentId: req.params.studentId,
-    shopItemId: req.params.shopItemId,
     approvedBy: req.body.approvedBy,
+    name: req.body.name,
     pointDifference: req.body.pointDifference,
     date: req.body.date,
   };
