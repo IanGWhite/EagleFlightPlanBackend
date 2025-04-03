@@ -51,7 +51,7 @@ jobs:
           command: |
             cd nodeapps/2025/flight-plan/t5
             npm install
-            sudo systemctl stop flight-plan-t5
+            sudo systemctl stop flight-plan-t5-backend
             sudo cp flight-plan-t5-backend.service /lib/systemd/system/flight-plan-t5-backend.service
             sudo systemctl daemon-reload
-            sudo systemctl start flight-plan-t5
+            sudo systemctl start flight-plan-t5-backend
