@@ -48,27 +48,28 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Student with an id
+// GET /students/user/:userId
 exports.findAllForUser = (req, res) => {
   const userId = req.params.userId;
+
   Student.findAll({ where: { userId: userId } })
     .then((data) => {
-      if (data) {
+      if (data.length > 0) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Students for user with id=${userId}.`,
+          message: `No students found for user with id=${userId}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message ||
-          "Error retrieving Students for user with id=" + userId,
+          err.message || `Error retrieving students for user with id=${userId}`,
       });
     });
 };
+
 // Find a single Student with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
