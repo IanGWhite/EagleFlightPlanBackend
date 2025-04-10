@@ -23,7 +23,8 @@ module.exports = (sequelize, Sequelize) => {
     reflectionReq: {
       type: Sequelize.INTEGER(1),
       allowNull: false,
-    },
+    }, 
+    
   });
   return EagleExperiences;
 };
