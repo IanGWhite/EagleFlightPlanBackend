@@ -17,6 +17,7 @@ exports.create = (req, res) => {
   const semester = {
     dateStart: req.body.dateStart,
     dateEnd: req.body.dateEnd,
+    name: req.body.name,
   };
   // Save Semester in the database
   Semester.create(semester)
