@@ -73,7 +73,10 @@ exports.login = async (req, res) => {
         // create a new User and save to database
         user = {
           email: email,
-          admin: 0
+          admin: 0,
+          fName: firstName,
+          lName: lastName,
+          isStudent: true
         };
       }
     })
@@ -132,6 +135,8 @@ exports.login = async (req, res) => {
           fName: firstName,
           lName: lastName,
           studentId: user.id,
+          points: 0,
+          semestersFromGrad: 8,
         };
       }
     })

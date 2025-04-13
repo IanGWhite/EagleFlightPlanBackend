@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     admin: 0,
     // refresh_token: req.body.refresh_token,
     // expiration_date: req.body.expiration_date
-    isStudent: 1,
+    isStudent: true,
     fName: req.body.fName,
     lName: req.body.lName
   };
