@@ -5,15 +5,15 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       canEditPoints: {
-        type: Sequelize.TINYINT(1),
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
       canAddEvents: {
-        type: Sequelize.TINYINT(1),
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
       canMarkAttendance: {
-        type: Sequelize.TINYINT(1),
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
     });
