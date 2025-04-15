@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
     });
     return Semester;
   };

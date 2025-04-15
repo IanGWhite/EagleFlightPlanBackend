@@ -137,6 +137,9 @@ exports.login = async (req, res) => {
           studentId: user.id,
           points: 0,
           semestersFromGrad: 8,
+          estimatedGradSemester: 8,
+          studentIdNo: 0,
+
         };
       }
     })
