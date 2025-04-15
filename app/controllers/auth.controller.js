@@ -4,6 +4,8 @@ const User = db.user;
 const Session = db.session;
 const Student = db.student;
 const Op = db.Sequelize.Op;
+const UserRole = db.userRole;
+
 
 const { google } = require("googleapis");
 
@@ -60,6 +62,7 @@ exports.login = async (req, res) => {
   let user = {};
   let session = {};
   let student = {};
+  let userRole = {};
 
   await User.findOne({
     where: {
@@ -180,7 +183,46 @@ exports.login = async (req, res) => {
       .catch((err) => {
         console.log("Error updating Student with id=" + student.id + " " + err);
       });
-  }
+    }
+        //trying to find the userRole
+    await UserRole.findOne({
+      where: {
+        userId: user.id,
+      },
+    })
+      .then((data) => {
+        if (data != null) {
+          userRole = data.dataValues;
+        } else {
+          // create a new Student and save to database
+          userRole = {
+            userId: user.id,
+            roleId : 1
+          };
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({ message: err.message });
+      });
+
+    //create userRole
+    if (UserRole.id === undefined) {
+      console.log("need to get userRole's id");
+      console.log(UserRole);
+      await UserRole.create(userRole)
+        .then((data) => {
+          console.log("userRole was registered");
+          userRole = data.dataValues;
+          // res.send({ message: "userRole was registered successfully!" });
+        })
+        .catch((err) => {
+          res.status(500).send({ message: err.message });
+        });
+    } else {
+      console.log(userRole);
+      // doing this to ensure that the userRole's name is the one listed with Google
+      console.log(userRole);
+    }
 
   // try to find session first
 

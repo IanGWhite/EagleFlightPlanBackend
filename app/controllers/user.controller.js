@@ -1,5 +1,6 @@
 const db = require("../models");
 const User = db.user;
+const UserRole = db.userRole;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new User
@@ -37,6 +38,7 @@ exports.create = (req, res) => {
       });
     });
 };
+
 
 // Retrieve all People from the database.
 exports.findAll = (req, res) => {

@@ -8,8 +8,6 @@ console.log('test hello');
 const db = require("./app/models");
 const runSeeds = require('./app/seed'); // path to /seed/index.js
 
-db.sequelize.sync({force: false});
-
 var corsOptions = {
   origin: "http://localhost:8081",
 };
@@ -98,7 +96,7 @@ require("./app/routes/category.routes")(app);
 const PORT = process.env.PORT || 3035;
 // Only start server if not in test mode
 if (process.env.NODE_ENV !== "test") {
-  db.sequelize.sync({ force: false }).then(async () => {
+  db.sequelize.sync({ force: true }).then(async () => {
     await runSeeds(); // seed data
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   }).catch(err => {
