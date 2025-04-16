@@ -33,5 +33,8 @@ module.exports = (app) => {
   // Delete all StudentEagleTasks
   router.delete("/students/:studentId/eagleFlightPlans/:eagleFlightPlanId/studentEagleTasks/deleteAll", studentEagleTasks.deleteAll);
 
+  // Update a StudentEagleTask with id
+  router.put("/studentEagleTasks/:id", studentEagleTasks.update);
+
   app.use("/flight-plan-t5", router);
 };
