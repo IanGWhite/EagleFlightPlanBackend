@@ -10,16 +10,16 @@ module.exports = (app) => {
   router.get("/", user.findAll);
 
   // Retrieve a single User with id
-  router.get("/:id", [authenticate], user.findOne);
+  router.get("/:id", user.findOne);
 
   // Update a User with id
-  router.put("/:id", [authenticate], user.update);
+  router.put("/:id", user.update);
 
   // Delete a User with id
-  router.delete("/:id", [authenticate], user.delete);
+  router.delete("/:id", user.delete);
 
   // Delete all User
-  router.delete("/", [authenticate], user.deleteAll);
+  router.delete("/", user.deleteAll);
 
   app.use("/flight-plan-t5/user", router);
 };
