@@ -6,8 +6,7 @@ const cors = require("cors");
 const app = express();
 console.log('test hello');
 const db = require("./app/models");
-
-db.sequelize.sync({force: false});
+const runSeeds = require('./app/seed'); // path to /seed/index.js
 
 var corsOptions = {
   origin: "http://localhost:8081",
@@ -91,12 +90,19 @@ require("./app/routes/eagleTaskMajors.routes")(app);
 require("./app/routes/eagleFlightPlans.routes")(app);
 require("./app/routes/badgeEvents.routes")(app);
 require("./app/routes/category.routes")(app);
+
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3035;
+// Only start server if not in test mode
 if (process.env.NODE_ENV !== "test") {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+  db.sequelize.sync({ force: false }).then(async () => {
+    await runSeeds(); // seed data
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  }).catch(err => {
+    console.error("❌ Error syncing DB:", err);
   });
 }
+
 
 module.exports = app;

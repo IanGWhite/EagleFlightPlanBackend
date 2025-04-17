@@ -3,7 +3,11 @@ const authconfig = require("../config/auth.config");
 const User = db.user;
 const Session = db.session;
 const Student = db.student;
+const StudentMajor = db.studentMajors;
+const StudentStrengths = db.studentStrengths;
 const Op = db.Sequelize.Op;
+const UserRole = db.userRole;
+
 
 const { google } = require("googleapis");
 
@@ -60,6 +64,9 @@ exports.login = async (req, res) => {
   let user = {};
   let session = {};
   let student = {};
+  let userRole = {};
+  let studentMajor = {};
+  let studentStrengths = {};
 
   await User.findOne({
     where: {
@@ -73,7 +80,10 @@ exports.login = async (req, res) => {
         // create a new User and save to database
         user = {
           email: email,
-          admin: 0
+          admin: 0,
+          fName: firstName,
+          lName: lastName,
+          isStudent: true
         };
       }
     })
@@ -132,6 +142,11 @@ exports.login = async (req, res) => {
           fName: firstName,
           lName: lastName,
           studentId: user.id,
+          points: 0,
+          semestersFromGrad: 8,
+          estimatedGradSemester: 8,
+          studentIdNo: 0,
+
         };
       }
     })
@@ -172,7 +187,113 @@ exports.login = async (req, res) => {
       .catch((err) => {
         console.log("Error updating Student with id=" + student.id + " " + err);
       });
-  }
+    }
+        //trying to find the userRole
+    await UserRole.findOne({
+      where: {
+        userId: user.id,
+      },
+    })
+      .then((data) => {
+        if (data != null) {
+          userRole = data.dataValues;
+        } else {
+          // create a new Student and save to database
+          userRole = {
+            userId: user.id,
+            roleId : 1
+          };
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({ message: err.message });
+      });
+
+    //create userRole
+    if (UserRole.id === undefined) {
+      console.log("need to get userRole's id");
+      console.log(UserRole);
+      await UserRole.create(userRole)
+        .then((data) => {
+          console.log("userRole was registered");
+          userRole = data.dataValues;
+          // res.send({ message: "userRole was registered successfully!" });
+        })
+        .catch((err) => {
+          res.status(500).send({ message: err.message });
+        });
+    } else {
+      console.log(userRole);
+      // doing this to ensure that the userRole's name is the one listed with Google
+      console.log(userRole);
+    }
+
+    //trying to find the StudentMajor
+    await StudentMajor.findOne({
+      where: {
+        studentId: student.id,
+      },
+    })
+      .then((data) => {
+        if (data != null) {
+          studentMajor = data.dataValues;
+        } else {
+          // create a new Student and save to database
+          studentMajor = {
+            studentId: student.id,
+            majorId : 1
+          };
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({ message: err.message });
+      });
+
+
+    //create StudentMajor
+    if (StudentMajor.id === undefined) {
+      console.log("need to get userRole's id");
+      console.log(StudentMajor);
+      await StudentMajor.create(studentMajor)
+        .then((data) => {
+          console.log("userRole was registered");
+          studentMajor = data.dataValues;
+          // res.send({ message: "userRole was registered successfully!" });
+        })
+        .catch((err) => {
+          res.status(500).send({ message: err.message });
+        });
+    } else {
+      console.log(studentMajor);
+      // doing this to ensure that the userRole's name is the one listed with Google
+      console.log(studentMajor);
+    }
+
+    const existingStrengths = await StudentStrengths.findAll({
+      where: { studentId: student.id }
+    });
+    
+    // If not exactly 5, delete and recreate
+    if (!existingStrengths || existingStrengths.length !== 5) {
+      await StudentStrengths.destroy({ where: { studentId: student.id } });
+    
+      const newStrengths = [
+        { studentId: student.id, strengthId: 1 },
+        { studentId: student.id, strengthId: 1 },
+        { studentId: student.id, strengthId: 1 },
+        { studentId: student.id, strengthId: 1 },
+        { studentId: student.id, strengthId: 1 },
+      ];
+    
+      for (const strength of newStrengths) {
+        await StudentStrengths.create(strength);
+      }
+    
+      console.log("StudentStrengths reset with 5 strengths");
+    } else {
+      console.log("Student already has 5 strengths");
+    }
+    
 
   // try to find session first
 

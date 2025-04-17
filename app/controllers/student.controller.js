@@ -15,11 +15,12 @@ exports.create = (req, res) => {
     userId: req.params.userId,
     fName: req.body.fName,
     lName: req.body.lName,
-    studentIdNo: req.body.studentIdNo,
-    estimatedGradSemester: req.body.estimatedGradSemester,
-    points: req.body.points,
-    semestersFromGrad: req.body.semestersFromGrad,
+    studentIdNo: req.body.studentIdNo || "000000",
+    estimatedGradSemester: req.body.estimatedGradSemester || "8",
+    points: req.body.points ?? 0, // use ?? if 0 is a valid input
+    semestersFromGrad: req.body.semestersFromGrad ?? 8,
   };
+  
   // Save Student in the database
   Student.create(student)
     .then((data) => {
@@ -30,7 +31,9 @@ exports.create = (req, res) => {
         message:
           err.message || "Some error occurred while creating the Student.",
       });
-    });
+    });  
+
+    console.log(student.id);
 };
 // Retrieve all Students from the database.
 exports.findAll = (req, res) => {

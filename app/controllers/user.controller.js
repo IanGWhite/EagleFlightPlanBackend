@@ -1,5 +1,6 @@
 const db = require("../models");
 const User = db.user;
+const UserRole = db.userRole;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new User
@@ -21,7 +22,7 @@ exports.create = (req, res) => {
     admin: 0,
     // refresh_token: req.body.refresh_token,
     // expiration_date: req.body.expiration_date
-    isStudent: 1,
+    isStudent: true,
     fName: req.body.fName,
     lName: req.body.lName
   };
@@ -37,6 +38,7 @@ exports.create = (req, res) => {
       });
     });
 };
+
 
 // Retrieve all People from the database.
 exports.findAll = (req, res) => {
