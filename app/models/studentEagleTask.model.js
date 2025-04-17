@@ -6,11 +6,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       approvedBy: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       completionDate: {
         type: Sequelize.DATE,
-        allowNull: false,
       },
       approvalState: {
         type: Sequelize.TINYINT(2),
@@ -22,7 +20,6 @@ module.exports = (sequelize, Sequelize) => {
       },
       submissionDate: {
         type: Sequelize.DATE,
-        allowNull: false,
       },
     });
     return StudentEagleTask;
