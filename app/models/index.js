@@ -589,6 +589,7 @@ db.eagleExperiences.hasMany(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+
 //eagleExperienceEvent
 db.eagleExperienceEvent.belongsTo(
   db.eagleExperiences,
@@ -640,4 +641,16 @@ db.majors.hasMany(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+
+//flight plans
+db.flightPlans.hasMany(
+  db.eagleTask,
+  {as: "task"},
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+db.flightPlans.hasMany(
+  db.eagleExperiences,
+  {as: "experience"},
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+)
 module.exports = db;

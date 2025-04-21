@@ -5,7 +5,7 @@ module.exports = (app) => {
 
   // Create a new flightPlan
   //router.post("/flightPlans/", [authenticate], flightPlans.create);
-  router.post("flightPlans/:semesterId", flightPlans.create);
+  router.post("/:semesterId", flightPlans.create);
 
 
   // Retrieve all flightPlans
@@ -16,16 +16,16 @@ module.exports = (app) => {
 
   // Retrieve a single EagleFlightPlan with id
   //router.get("/flightPlans/:id", [authenticate], flightPlans.findOne);
-  router.get("/flightPlans/:id", flightPlans.findOne);
+  router.get("/:id", flightPlans.findOne);
 
   // Update a EagleFlightPlan with id
-  router.put("/flightPlans/:id", flightPlans.update);
+  router.put("/:id", flightPlans.update);
 
   // Delete a EagleFlightPlan with id
-  router.delete("/flightPlans/:id", flightPlans.delete);
+  router.delete("/:id", flightPlans.delete);
 
   // Delete all flightPlans
-  router.delete("/flightPlans/deleteAll", flightPlans.deleteAll);
+  router.delete("/deleteAll", flightPlans.deleteAll);
 
-  app.use("/flight-plan-t5", router);
+  app.use("/flight-plan-t5/flightPlans", router);
 }
