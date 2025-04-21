@@ -5,27 +5,29 @@ module.exports = (app) => {
 
   // Create a new EagleFlightPlan for a Student
   //router.post("/:studentId/eagleFlightPlans/", [authenticate], eagleFlightPlans.create);
-  router.post("/:studentId/eagleFlightPlans/:semesterId", eagleFlightPlans.create);
+  router.post("/students/:studentId/eagleFlightPlans/:semesterId", eagleFlightPlans.create);
 
 
   // Retrieve all EagleFlightPlans for a resume
   router.get(
-    "/:studentId/eagleFlightPlans/",
+    "/students/:studentId/eagleFlightPlans/",
     eagleFlightPlans.findAllForStudent
   );
 
+  router.get("/eagleFlightPlans/:id", eagleFlightPlans.findOne);
+
   // Retrieve a single EagleFlightPlan with id
   //router.get("/:studentId/eagleFlightPlans/:id", [authenticate], eagleFlightPlans.findOne);
-  router.get("/:studentId/eagleFlightPlans/:id", eagleFlightPlans.findOne);
+  router.get("/students/:studentId/eagleFlightPlans/:id", eagleFlightPlans.findOne);
 
   // Update a EagleFlightPlan with id
-  router.put("/:studentId/eagleFlightPlans/:id", eagleFlightPlans.update);
+  router.put("/students/:studentId/eagleFlightPlans/:id", eagleFlightPlans.update);
 
   // Delete a EagleFlightPlan with id
-  router.delete("/:studentId/eagleFlightPlans/:id", eagleFlightPlans.delete);
+  router.delete("/students/:studentId/eagleFlightPlans/:id", eagleFlightPlans.delete);
 
   // Delete all EagleFlightPlans
-  router.delete("/:studentId/eagleFlightPlans/deleteAll", eagleFlightPlans.deleteAll);
+  router.delete("/students/:studentId/eagleFlightPlans/deleteAll", eagleFlightPlans.deleteAll);
 
-  app.use("/flight-plan-t5/students", router);
+  app.use("/flight-plan-t5", router);
 }
