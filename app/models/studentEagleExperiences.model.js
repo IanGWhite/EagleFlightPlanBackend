@@ -10,7 +10,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     completionDate: {
       type: Sequelize.DATE,
-      allowNull: false,
     },
     approvalState: {
       type: Sequelize.INTEGER,
@@ -18,7 +17,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     reflection: {
       type: Sequelize.STRING(1000),
-      allowNull: false,
     },
   });
   return StudentEagleExperiences;
