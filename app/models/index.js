@@ -64,6 +64,7 @@ db.strengths = require("./strengths.model.js")(sequelize, Sequelize);
 db.eagleExperienceMajors = require("./eagleExperienceMajors.model.js")(sequelize, Sequelize);
 db.eagleTaskMajors = require("./eagleTaskMajors.model.js")(sequelize, Sequelize);
 db.eagleFlightPlans = require("./eagleFlightPlans.model.js")(sequelize, Sequelize);
+db.flightPlans = require("./flightPlans.model.js")(sequelize, Sequelize);
 db.badgeEvents = require("./badgeEvents.model.js")(sequelize, Sequelize);
 
 db.category = require("./category.model.js")(sequelize, Sequelize);
@@ -387,6 +388,12 @@ db.semester.hasMany(
   { as: "eagleFlightPlans" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
+
+db.semester.hasOne(
+  db.flightPlans,
+  { as: "semester"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+)
 
 //Strengths 
 db.studentStrengths.belongsTo(
