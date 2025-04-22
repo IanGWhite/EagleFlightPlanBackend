@@ -5,6 +5,8 @@ const Session = db.session;
 const Student = db.student;
 const StudentMajor = db.studentMajors;
 const StudentStrengths = db.studentStrengths;
+const FlightPlan = db.flightPlans;
+const EagleFlightPlan = db.eagleFlightPlans;
 const Op = db.Sequelize.Op;
 const UserRole = db.userRole;
 const { google } = require("googleapis");
@@ -141,6 +143,25 @@ exports.login = async (req, res) => {
         await StudentStrengths.create(strength);
       }
       console.log("StudentStrengths reset with 5 strengths");
+    }
+
+    //flight plan
+    let eagleFlightPlan = {};
+    await EagleFlightPlan.findOne({ where: { studentId: student.id } })
+      .then((data) => {
+        if (data != null) {
+          eagleFlightPlan = data.dataValues
+          
+        } else {
+            eagleFlightPlan = {studentId: student.id, semesterId: 1}
+        }
+      });
+
+    // If eagle flight plan doesn't exist, create one
+    if (!eagleFlightPlan.id) {
+      await EagleFlightPlan.create(eagleFlightPlan).then((data) =>{
+        eagleFlightPlan = data.dataValues;
+      })
     }
 
     // Find existing session or create a new one

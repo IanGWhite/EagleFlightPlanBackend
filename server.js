@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-console.log('test hello');
+// console.log('test hello');
 const db = require("./app/models");
 const runSeeds = require('./app/seed'); // path to /seed/index.js
 
@@ -27,26 +27,26 @@ app.get("/", (req, res) => {
 });
 
 
-console.log('starting search for routes');
+// console.log('starting search for routes');
 require("./app/routes/auth.routes")(app);
-console.log('found auth routes');
+// console.log('found auth routes');
 require("./app/routes/user.routes")(app);
-console.log('found user routes');
+// console.log('found user routes');
 require("./app/routes/student.routes")(app);
-console.log('found student routes');
+// console.log('found student routes');
 require("./app/routes/lesson.routes")(app);
-console.log('found lesson routes');
+// console.log('found lesson routes');
 require("./app/routes/resume.routes")(app);
-console.log('found resume routes');
+// console.log('found resume routes');
 
 require("./app/routes/link.routes")(app);
-console.log('found link routes');
+// console.log('found link routes');
 require("./app/routes/skill.routes")(app);
-console.log('found skill routes');
+// console.log('found skill routes');
 require("./app/routes/project.routes")(app);
-console.log('found project routes');
+// console.log('found project routes');
 require("./app/routes/comment.routes")(app);
-console.log('found comment routes');
+// console.log('found comment routes');
 
 require("./app/routes/award.routes")(app);
 require("./app/routes/contact.routes")(app);
@@ -55,7 +55,7 @@ require("./app/routes/experience.routes")(app);
 require("./app/routes/interest.routes")(app);
 
 require("./app/routes/ResumeExperience.routes")(app);
-console.log('found ResumeExperience routes');
+// console.log('found ResumeExperience routes');
 require("./app/routes/ResumeAward.routes")(app);
 require("./app/routes/ResumeEducation.routes")(app);
 require("./app/routes/resumeInterest.routes")(app);
@@ -88,6 +88,7 @@ require("./app/routes/strengths.routes")(app);
 require("./app/routes/eagleExperienceMajors.routes")(app);
 require("./app/routes/eagleTaskMajors.routes")(app); 
 require("./app/routes/eagleFlightPlans.routes")(app);
+require("./app/routes/flightPlans.routes")(app);
 require("./app/routes/badgeEvents.routes")(app);
 require("./app/routes/category.routes")(app);
 

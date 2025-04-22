@@ -64,6 +64,7 @@ db.strengths = require("./strengths.model.js")(sequelize, Sequelize);
 db.eagleExperienceMajors = require("./eagleExperienceMajors.model.js")(sequelize, Sequelize);
 db.eagleTaskMajors = require("./eagleTaskMajors.model.js")(sequelize, Sequelize);
 db.eagleFlightPlans = require("./eagleFlightPlans.model.js")(sequelize, Sequelize);
+db.flightPlans = require("./flightPlans.model.js")(sequelize, Sequelize);
 db.badgeEvents = require("./badgeEvents.model.js")(sequelize, Sequelize);
 
 db.category = require("./category.model.js")(sequelize, Sequelize);
@@ -388,6 +389,12 @@ db.semester.hasMany(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+db.semester.hasOne(
+  db.flightPlans,
+  { as: "semester"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+)
+
 //Strengths 
 db.studentStrengths.belongsTo(
   db.student,
@@ -582,6 +589,7 @@ db.eagleExperiences.hasMany(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+
 //eagleExperienceEvent
 db.eagleExperienceEvent.belongsTo(
   db.eagleExperiences,
@@ -633,4 +641,16 @@ db.majors.hasMany(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+
+//flight plans
+db.flightPlans.hasMany(
+  db.eagleTask,
+  {as: "task"},
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+db.flightPlans.hasMany(
+  db.eagleExperiences,
+  {as: "experience"},
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+)
 module.exports = db;
