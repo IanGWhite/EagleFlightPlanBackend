@@ -6,10 +6,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     approvedBy: {
       type: Sequelize.STRING,
-      allowNull: false,
     },
     completionDate: {
       type: Sequelize.DATE,
+      allowNull:true,
     },
     approvalState: {
       type: Sequelize.INTEGER,
