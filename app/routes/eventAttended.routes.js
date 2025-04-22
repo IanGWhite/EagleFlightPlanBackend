@@ -5,28 +5,34 @@ module.exports = (app) => {
 
   // Create a new StudentStrength for a Student
   //router.post("/:studentId/eventAttended/", [authenticate], eventAttended.create);
-  router.post("/:studentId/eventAttended/:eventId", eventAttended.create);
+  router.post("/students/:studentId/eventAttended/:eventId", eventAttended.create);
 
 
   // Retrieve all StudentStrengths for a student
   router.get(
-    "/:studentId/eventAttended/",
+    "/students/:studentId/eventAttended/",
     eventAttended.findAllForStudent
   );
 
+  router.get(
+    "/eventAttended/:eventId",
+    eventAttended.findAll
+  );
+  
+
   // Retrieve a single StudentStrength with id
   //router.get("/:studentId/eventAttended/:id", [authenticate], eventAttended.findOne);
-  router.get("/:studentId/eventAttended/:id", eventAttended.findOne);
+  router.get("/students/:studentId/eventAttended/:id", eventAttended.findOne);
 
   // Update a StudentStrength with id
-  router.put("/:studentId/eventAttended/:id", eventAttended.update);
+  router.put("/students/:studentId/eventAttended/:id", eventAttended.update);
 
   // Delete a StudentStrength with id
-  router.delete("/:studentId/eventAttended/:id", eventAttended.delete);
+  router.delete("/students/:studentId/eventAttended/:id", eventAttended.delete);
 
   // Delete all StudentStrengths
-  router.delete("/:studentId/eventAttended/deleteAll", eventAttended.deleteAll);
+  router.delete("/students/:studentId/eventAttended/deleteAll", eventAttended.deleteAll);
 
-  app.use("/flight-plan-t5/students", router);
+  app.use("/flight-plan-t5", router);
 };
   
