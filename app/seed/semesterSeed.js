@@ -5,6 +5,7 @@ module.exports = async function seedSemesters() {
   const count = await Semester.count();
   if (count === 0) {
     await Semester.bulkCreate([
+      { name: "Spring 2025", dateStart: "2025-01-15", dateEnd: "2025-05-10" },      
       { name: "Fall 2025", dateStart: "2025-09-01", dateEnd: "2025-12-15" },
       { name: "Spring 2026", dateStart: "2026-01-15", dateEnd: "2026-05-10" },
       { name: "Fall 2026", dateStart: "2026-09-01", dateEnd: "2026-12-15" },
